@@ -192,10 +192,13 @@ const renderDetails = (itemData) => {
 const moreDetails = (evt) => {
     console.log('APP: MORE DETAILS ');
     const aiSelectorWrap = document.getElementById('aiSelectorWrap');
+    const aiComparisonWrap = document.getElementById('aiComparisonWrap');
     const itemRef = evt.target.getAttribute('data-ref');
-    fadeElement(aiSelectorWrap,false);
+    
     // Now hide the loading panel
     loadingPanelState(true,false,'Loading A.I. details');
+    fadeElement(aiSelectorWrap,false);
+    fadeElement(aiComparisonWrap,false);
     getAgentDetails(itemRef,renderDetails,'details');
 };
 
@@ -277,7 +280,7 @@ const buildResultListContent = (itemData,forComparison) => {
     }
     if( forComparison ){
         const footerDiv = generateHTML('div');
-        const detailsButton = generateHTML('button','More details','button',null,'cta',itemData.name,null,null,moreDetails,'click');
+        const detailsButton = generateHTML('button','More details','button',null,'cta',itemData.name,'data-ref',itemData.name,moreDetails,'click');
         footerDiv.appendChild(detailsButton);
         wrap.appendChild(footerDiv);
     }
