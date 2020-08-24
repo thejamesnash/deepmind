@@ -36,23 +36,26 @@ ul, ol {
 }
 html {
     font-size: 62.5%;
+    height: 100%;
+    background-color: var(--dm-shadow-color);
 }
 body {
-    background-color: var(--dm-bg-color);
     background: linear-gradient(45deg, var(--dm-shadow-color) 0%, var(--dm-bg-color) 100%);
-    width: 100vw;
-    height: 100vh;
+    height: 100%;
     color: var(--dm-text-color);
     font: normal 400 1.6rem/1.6 'DeepMind';
+    display: block;
 }
+
 section {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
     overflow: scroll; 
+    padding: 4rem 0;
 }
 header {
     position: fixed;
@@ -519,7 +522,7 @@ button {
     font-size: 1.4rem;
     min-width: 240px;
     display: grid;
-    grid-template-columns: 1fr 0 9rem 7rem;
+    grid-template-columns: 1fr 0 9rem 8rem;
     border-bottom: 1px dotted var(--dm-border-color);
     padding: 1rem 0;
     align-items: center;
@@ -529,7 +532,8 @@ button {
     padding: 0.5rem 0;
     font-size: 1.2rem;
     border-bottom: 0 none;
-    text-decoration: underline dotted;
+    text-decoration: underline;
+    text-decoration-style: dotted;
 }
 
 .selector-wrap li .pseudo-btn {
