@@ -19,7 +19,6 @@
   --dm-highlight-color: rgb(254,219,18);
   --dm-bg-color: rgb(0, 25, 66);
   --dm-border-color: rgba(255,255,255,0.5);
-  
   --dm-shadow-color: rgb(1, 8, 20);;
   --dm-text-color: rgb(255,255,255);
   --dm-error-color: rgb(255,0,0);
@@ -40,28 +39,30 @@ html {
     background-color: var(--dm-shadow-color);
 }
 body {
-    background: linear-gradient(45deg, var(--dm-shadow-color) 0%, var(--dm-bg-color) 100%);
     height: 100%;
     color: var(--dm-text-color);
     font: normal 400 1.6rem/1.6 'DeepMind';
     display: block;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-
-section {
-    position: absolute;
-    top: 0;
-    left: 0;
+main {
     width: 100vw;
     height: 100vh;
-    box-sizing: border-box;
-    overflow: scroll; 
-    padding: 4rem 0;
-}
-header {
+    background: var(--dm-shadow-color) linear-gradient(45deg, var(--dm-shadow-color) 0%, var(--dm-bg-color) 100%) top left fixed no-repeat;
     position: fixed;
-    top: 0;
-    left: 0;
+    overflow: scroll;
 }
+section {
+    box-sizing: border-box;
+    padding: 0;
+}
+section.fadeout {
+    display: none;
+}
+
+
+
 fieldset {
     margin-top: 2rem;
 }
@@ -75,6 +76,7 @@ h2 {
     font-size: 2rem
 }
 legend {
+    display: block;
     text-align: center;
 }
 button {
@@ -188,7 +190,7 @@ button {
 
 /* Comparison section ------  */
 .comparison-wrap {
-    padding: 0 0 2rem;
+    padding: 0;
 }
 .comparison-wrap h1 {
     text-align: center;
@@ -332,11 +334,13 @@ button {
 }
 
 @media screen and (min-width: 680px){
-    .comparison-wrap {
+    .comparison-wrap.fadein {
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 4rem 0;
+        align-self: center;
+        align-items: normal;
     }
     .comparison-list {
         display: grid;
