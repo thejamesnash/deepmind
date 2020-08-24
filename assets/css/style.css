@@ -14,6 +14,18 @@
     font-weight: 700;
 }
 
+/*--dm-shadow-color: rgb(1, 8, 20);*/
+:root {
+  --dm-highlight-color: rgb(254,219,18);
+  --dm-bg-color: rgb(0, 25, 66);
+  --dm-border-color: rgba(255,255,255,0.5);
+  
+  --dm-shadow-color: rgb(1, 8, 20);;
+  --dm-text-color: rgb(255,255,255);
+  --dm-error-color: rgb(255,0,0);
+  --dm-semi-bg-color: rgba(0,12,33,0.9);
+}
+
 /* Container resets and defaults */
 html, body, section, main, header, footer, div, ul, ol, li, dl, dt, dd, h1, h2, h3, p  {
     margin: 0;
@@ -26,11 +38,11 @@ html {
     font-size: 62.5%;
 }
 body {
-    background-color: rgb(0, 25, 66);
-    background: linear-gradient(45deg, rgb(1, 8, 20) 0%,rgb(0, 25, 66) 100%);
+    background-color: var(--dm-bg-color);
+    background: linear-gradient(45deg, var(--dm-shadow-color) 0%, var(--dm-bg-color) 100%);
     width: 100vw;
     height: 100vh;
-    color: #FFF;
+    color: var(--dm-text-color);
     font: normal 400 1.6rem/1.6 'DeepMind';
 }
 section {
@@ -54,7 +66,7 @@ fieldset {
 /* Text styles */
 h1, h2 {
     font: normal 2.4rem/1.6 'DeepMindSerif';
-    text-shadow: 0.1rem 0.1rem black;
+    text-shadow: 0.1rem 0.1rem var(--dm-shadow-color);
 }
 h2 {
     font-size: 2rem
@@ -69,8 +81,8 @@ button {
     font: normal 700 1.6rem/1 'DeepMind';
 }
 .cta {
-    background: rgb(254,219,18);
-    color: rgba(0,12,33,1);
+    background: var(--dm-highlight-color);
+    color: var(--dm-shadow-color);
     -webkit-appearance: none;
     appearance: none;
     border: 0 none;
@@ -79,7 +91,7 @@ button {
     border-radius: 0.4rem;
     margin: 0 auto;
     display: inline-block;
-    box-shadow: 0 0.4rem 0 #010814;
+    box-shadow: 0 0.4rem 0 var(--dm-shadow-color);;
 
 }
 .link {
@@ -88,7 +100,7 @@ button {
     line-height: 1.4;
     color: #FFF;
     padding: 0;
-    border-bottom: 1px dashed rgba(255,255,255,0.5);
+    border-bottom: 1px dashed var(--dm-border-color);
     background-color: transparent;
 }
 
@@ -123,18 +135,6 @@ button {
     animation: fadein 0.4s linear forwards;
 }
 
-/* Site header ------ */
-header {
-    background-color: rgba(0,6,12);
-    width: 100vw;
-    height: 4rem;
-    box-sizing: border-box;
-}
-header h1 {
-    font-size: 2rem;
-    line-height: 1;
-}
-
 /* Loading panel ---- */
 /* Loading SVG */
 @keyframes spin {
@@ -155,7 +155,7 @@ header h1 {
     animation-play-state: paused;
 }
 .error .deepmind #c1 {
-    fill: red;
+    fill: var(--dm-error-color);
 }
 
 /* Loading content */
@@ -169,19 +169,18 @@ header h1 {
     left: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,12,33,0.9);
+    background-color: var(--dm-semi-bg-color);
 }
 .loading svg {
     width: 40px;
     height: 40px;
 }
 .loading p {
-    box-shadow: 0 0.4rem 0 rgba(0,6,16,1);
     color: #FFF;
     padding: 1rem 2rem;
     line-height: 1;
-    background-color: rgba(0,12,33,1);
-    margin-top: 0;
+    background-color: var(--dm-shadow-color);
+    margin-top: 1rem;
 }
 
 /* Comparison section ------  */
@@ -213,7 +212,7 @@ header h1 {
 
 }
 .comparison-list > li:last-of-type {
-    border-left: 1px dotted rgba(255,255,255,0.4);
+    border-left: 1px dotted var(--dm-border-color);
 }
 .comparison-list h2 {
     color: #FFF;
@@ -225,30 +224,31 @@ header h1 {
 }
 .comparison-list dl {
     position: relative;
-    border-bottom: 1px dotted rgba(255,255,255,0.4);
+    border-bottom: 1px dotted var(--dm-border-color);
 }
 .comparison-list dt {
     position: absolute;
     top: 2.4rem;
-    right: calc( 50vw - 4rem );
+    right: calc( 50vw - 4.9rem );
     line-height: 1.4rem;
     background-color: #010814;
     box-sizing: border-box;
-    padding: 1rem 0;
-    width: 8rem;
+    padding: 1rem 0 1rem 0;
+    width: 9.6rem;
     cursor: pointer;
+    text-indent: -1.2rem
 }
 .comparison-list dt:after {
     content: '';
     width: 0;
     height: 0;
     display: block;
-    border: 10px solid red;
-    border-width: 8px 6px 0 6px;
-    border-color: #FFF transparent transparent;
+    border: 10px solid var(--dm-text-color);
+    border-width: 4px 4px 0 4px;
+    border-color: var(--dm-text-color) transparent transparent;
     position: absolute;
-    bottom: 1.1rem;
-    right: -0.9rem;
+    bottom: 1.4rem;
+    right: 0.8rem;
     transform: rotate(0deg);
     transition: all 0.2s ease-in-out;
 }
@@ -319,7 +319,7 @@ header h1 {
 } 
 .radial-score circle {
     fill: none; 
-    stroke: rgb(254,219,18);
+    stroke: var(--dm-highlight-color);
     stroke-width: 20;
     stroke-linecap: round;
     stroke-miterlimit: 10;
@@ -329,6 +329,12 @@ header h1 {
 }
 
 @media screen and (min-width: 680px){
+    .comparison-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 4rem 0;
+    }
     .comparison-list {
         display: grid;
         grid-template-columns: 1fr;
@@ -352,7 +358,7 @@ header h1 {
         grid-template-columns: 16rem 1fr 1fr 1fr;
         align-items: center;
         justify-content: center;
-        border-top: 1px dotted rgba(255,255,255,0.4);
+        border-top: 1px dotted var(--dm-border-color);
         padding: 1rem 0;
         box-sizing: border-box;
         width: 100vw
@@ -429,6 +435,9 @@ header h1 {
         width: 1.4rem;
     }
 
+    .comparison-wrap > .cta {
+        margin: 1rem;
+    }
 }
 @media screen and (min-width: 840px){
     
@@ -483,7 +492,7 @@ header h1 {
     stroke: #010814;
 }
 .brainsvg .ol {
-    stroke: rgb(254,219,18);
+    stroke: var(--dm-highlight-color);
     stroke-dasharray: 12;
     animation: neuron 10s linear infinite forwards;
 }
@@ -492,7 +501,7 @@ header h1 {
     width: calc( 100vw - 4rem );
     box-sizing: border-box;
     margin: 2rem;
-    border: 1px dotted rgba(255,255,255,0.4);
+    border: 1px dotted var(--dm-border-color);
 }
 .selector-wrap p {
     text-align: center;
@@ -511,9 +520,7 @@ header h1 {
     min-width: 240px;
     display: grid;
     grid-template-columns: 1fr 0 9rem 7rem;
-    /* justify-content: center; */
-    /*     background-image: linear-gradient(to bottom, rgba(1,8,20,0.5), rgba(1,8,20,0)); */
-    border-bottom: 1px dotted rgba(255,255,255,0.4);
+    border-bottom: 1px dotted var(--dm-border-color);
     padding: 1rem 0;
     align-items: center;
 }
@@ -529,7 +536,7 @@ header h1 {
     padding: 0.4rem 0;
     font-size: 1.2rem;
     border-radius: 3rem;
-    border: 1px solid rgba(255,255,255,0.4);
+    border: 1px solid var(--dm-border-color);
     display: block;
     text-align: center;
     margin-right: 1rem;
@@ -563,16 +570,31 @@ header h1 {
 
 .details-wrap h1 {
     text-align: center;
+    padding-top: 2rem
 }
 .details-wrap button {
     position: absolute;
-    top: 0;
-    left: 2rem
+    top: 2rem;
+    right: 6rem;
+    
 }
+
 .details-wrap button:before {
-    content: '<';
+    content: 'x';
     position: absolute;
-    left: -1rem;
+    right: -4rem;
+    top: -0.4rem;
+    background-color: transparent;
+    color: var(--dm-text-color);
+    font-size: 2.4rem;
+    display: block;
+    line-height: 2.4rem;
+    border-radius: 50%;
+    font-weight: 700;
+    text-align: center;
+    width: 2.4rem;
+    padding: 0 2px 4px 2px;
+    border: 0.1rem solid var(--dm-text-color);
 }
 .details-wrap article {
     width: calc( 100vw - 4rem );
@@ -586,7 +608,7 @@ header h1 {
     padding-bottom: 1rem
 }
 .details-wrap article h2 {
-    border-bottom: 1px dotted rgba(255,255,255,0.4);
+    border-bottom: 1px dotted var(--dm-border-color);
     margin-bottom: 1rem
 }
 .details-wrap article p {
@@ -598,7 +620,7 @@ header h1 {
     display: grid;
     grid-template-columns: 3fr 8fr;
     align-items: center;
-    border-top: 1px dotted rgba(255,255,255,0.4);
+    border-top: 1px dotted var(--dm-border-color);
     padding: 1rem 0;;
 }
 
@@ -652,7 +674,5 @@ header h1 {
         padding-right: 1rem;
         width: 1.4rem;
     }
-    .details-wrap  ul span {
 
-    }
 
