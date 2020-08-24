@@ -188,6 +188,10 @@ header h1 {
 .comparison-wrap {
     padding: 0 0 2rem;
 }
+.comparison-wrap h1 {
+    text-align: center;
+    padding-top: 1rem;
+}
 .comparison-wrap > p {
     padding: 1rem;
     font-size: 1.4rem
