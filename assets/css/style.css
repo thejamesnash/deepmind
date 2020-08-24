@@ -1,0 +1,654 @@
+@font-face {
+    font-family: DeepMindSerif;
+    src: url('../fonts/DeepMindSerif-Bold.woff2');
+    font-weight: 700;
+}
+@font-face {
+    font-family: DeepMind;
+    src: url('../fonts/DeepMindSans-Regular.woff2');
+    font-weight: 400;
+}
+@font-face {
+    font-family: DeepMind;
+    src: url('../fonts/DeepMindSans-Bold.woff2');
+    font-weight: 700;
+}
+
+/* Container resets and defaults */
+html, body, section, main, header, footer, div, ul, ol, li, dl, dt, dd, h1, h2, h3, p  {
+    margin: 0;
+    padding: 0;
+}
+ul, ol {
+    list-style: none;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    background-color: rgb(0, 25, 66);
+    background: linear-gradient(45deg, rgb(1, 8, 20) 0%,rgb(0, 25, 66) 100%);
+    width: 100vw;
+    height: 100vh;
+    color: #FFF;
+    font: normal 400 1.6rem/1.6 'DeepMind';
+}
+section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: scroll; 
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+fieldset {
+    margin-top: 2rem;
+}
+
+/* Text styles */
+h1, h2 {
+    font: normal 2.4rem/1.6 'DeepMindSerif';
+    text-shadow: 0.1rem 0.1rem black;
+}
+h2 {
+    font-size: 2rem
+}
+legend {
+    text-align: center;
+}
+button {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0 none;
+    font: normal 700 1.6rem/1 'DeepMind';
+}
+.cta {
+    background: rgb(254,219,18);
+    color: rgba(0,12,33,1);
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0 none;
+    font: normal 700 1.6rem/1 'DeepMind';
+    padding: 1rem 1.4rem;
+    border-radius: 0.4rem;
+    margin: 0 auto;
+    display: inline-block;
+    box-shadow: 0 0.4rem 0 #010814;
+
+}
+.link {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: #FFF;
+    padding: 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.5);
+    background-color: transparent;
+}
+
+
+/* Generic element visibility classes */
+.hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+}
+.not-visible {
+    visibility: hidden;
+}
+
+/* Generic fade in/out */
+@keyframes fadeout {
+    0% { opacity: 1; }
+    99% { opacity: 0; }
+    100% { z-index: -1; opacity: 0;}
+}
+@keyframes fadein {
+    0% { z-index: 1; opacity: 0; }
+    100% { opacity: 1; }    
+}
+.fadeout {
+    animation: fadeout 0.4s linear forwards;
+}
+.fadein {
+    animation: fadein 0.4s linear forwards;
+}
+
+/* Site header ------ */
+header {
+    background-color: rgba(0,6,12);
+    width: 100vw;
+    height: 4rem;
+    box-sizing: border-box;
+}
+header h1 {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* Loading panel ---- */
+/* Loading SVG */
+@keyframes spin {
+    0% { transform: rotate(360deg) }
+    100% { transform: rotate(0deg) }
+}
+.deepmind #c1 {
+    transform-origin: center center;
+    transform: rotate3d(360deg);
+    animation: spin 1s linear infinite;
+}
+.deepmind g {
+    transform-origin: center center;
+    transform: rotate3d(360deg);
+    animation: spin 2s linear infinite reverse;
+}
+.error .deepmind #c1, .error .deepmind g {
+    animation-play-state: paused;
+}
+.error .deepmind #c1 {
+    fill: red;
+}
+
+/* Loading content */
+.loading {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,12,33,0.9);
+}
+.loading svg {
+    width: 40px;
+    height: 40px;
+}
+.loading p {
+    box-shadow: 0 0.4rem 0 rgba(0,6,16,1);
+    color: #FFF;
+    padding: 1rem 2rem;
+    line-height: 1;
+    background-color: rgba(0,12,33,1);
+    margin-top: 0;
+}
+
+/* Comparison section ------  */
+.comparison-wrap {
+    padding: 0 0 2rem;
+}
+.comparison-wrap > p {
+    padding: 1rem;
+    font-size: 1.4rem
+}
+.comparison-wrap > .cta {
+    width: 10rem;
+    position: relative;
+    top: 2rem;
+    left: calc( 50vw - 5rem );
+}
+.comparison-list {
+    display: flex;
+    text-align: center; 
+    width: 100vw;
+}
+.comparison-list > li {
+    width: 50vw;
+    display: grid;
+
+}
+.comparison-list > li:last-of-type {
+    border-left: 1px dotted rgba(255,255,255,0.4);
+}
+.comparison-list h2 {
+    color: #FFF;
+    padding: 1rem 2rem;
+    line-height: 1;
+    background-color: #010814;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+.comparison-list dl {
+    position: relative;
+    border-bottom: 1px dotted rgba(255,255,255,0.4);
+}
+.comparison-list dt {
+    position: absolute;
+    top: 2.4rem;
+    right: calc( 50vw - 4rem );
+    line-height: 1.4rem;
+    background-color: #010814;
+    box-sizing: border-box;
+    padding: 1rem 0;
+    width: 8rem;
+    cursor: pointer;
+}
+.comparison-list dt:after {
+    content: '';
+    width: 0;
+    height: 0;
+    display: block;
+    border: 10px solid red;
+    border-width: 8px 6px 0 6px;
+    border-color: #FFF transparent transparent;
+    position: absolute;
+    bottom: 1.1rem;
+    right: -0.9rem;
+    transform: rotate(0deg);
+    transition: all 0.2s ease-in-out;
+}
+.comparison-list .expand dt:after {
+    transform: rotate(180deg);
+}
+.comparison-list > li:first-of-type dt,
+.comparison-list > li:first-of-type li span {
+    display: none;
+}
+.comparison-list strong {
+    padding: 1.6rem 0;
+    display: block;
+    position: relative;
+}
+.comparison-list ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 1rem
+}
+.comparison-list .expand ul,
+.comparison-list > li .expand span {
+    max-height: 100vh;
+}
+
+.comparison-list > li li span {
+    position: absolute;
+    right: calc( 50vw - 4.5rem );
+    line-height: 2.4rem;
+    background-color: #010814;
+    box-sizing: border-box;
+    padding: 0;
+    width: 9rem;
+    overflow: hidden;
+    max-height: 0;
+    font-size: 1.2rem;
+    z-index: 1;
+    margin:  0;
+    height: 2.4rem;
+}
+
+.comparison-list .cta {
+    display: none;
+}
+
+/* Radial scores */
+.radial-score {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    color: #FFF;
+    font: 400 2rem/5rem 'DeepMind';
+    position: relative;
+    margin: 0 auto;
+}
+.radial-score strong,
+.radial-score span {
+    width: 5rem;
+    text-align: center;
+    display: block;
+}
+
+.radial-score svg {
+    position: absolute;
+    top: 1.6rem;
+    left: 0;
+} 
+.radial-score circle {
+    fill: none; 
+    stroke: rgb(254,219,18);
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 720;
+    transform: rotate(-90deg);
+    transform-origin: center center;
+}
+
+@media screen and (min-width: 680px){
+    .comparison-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        text-align: left;
+        padding-top: 5rem;
+        width: 100vw;
+    }
+    .comparison-wrap > p {
+        max-width: 580px;
+        margin: 0 auto
+    }
+    .comparison-list h2 {
+        background-color: transparent;
+        box-shadow: 0 0 0 transparent;
+    }
+
+
+    .comparison-list > li {
+        display: grid;
+        grid-template-columns: 16rem 1fr 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px dotted rgba(255,255,255,0.4);
+        padding: 1rem 0;
+        box-sizing: border-box;
+        width: 100vw
+    }
+    .comparison-list > li:last-of-type {
+        border-left: 0 none;
+    }
+    .comparison-list dl {
+        padding: 0;
+        border: 0 none;
+    }
+    .comparison-list dt {
+        text-align: left;
+        position: absolute;
+        top: -14rem;
+        width: 14rem;
+        left: 0;
+        box-shadow: 0 0 0 transparent;
+        color: #FFF;
+        padding: 0;
+        line-height: 1;
+        background-color: transparent;
+        margin-top: 0;
+        box-sizing: border-box;
+        text-transform: uppercase;
+        cursor: none;
+        font-size: 1.2rem;
+    }
+    .comparison-list dt:after {
+        display: none;
+    }
+    .comparison-list dd {
+        display: grid;
+        grid-template-columns: 5rem 1fr;
+        align-items: center;
+        justify-content: center;
+    }
+    .comparison-list dd ul {
+        max-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        text-align: left;
+        width: 100%;
+        padding: 0.4rem 0 0 2rem;
+    }
+    
+    .comparison-list .radial-score:after {
+        content: "\007B";
+        font-size: 2rem;
+        position: absolute;
+        right: -1.4rem;
+        top: 1.5rem;
+    }
+    
+    .comparison-list dd ul li {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+    }
+    #aiComparison ul span, .comparison-list dd ul b {
+        display: block;
+        position: static;
+        max-height: 100vh;
+        font-size: 1.2rem;
+        line-height: 1;
+        height: 1.4rem;
+        background-color: transparent;
+    }
+    .comparison-list dd ul b {
+        padding-right: 1rem;
+        width: 1.4rem;
+    }
+
+}
+@media screen and (min-width: 840px){
+    
+    .comparison-list > li {
+        display: grid;
+        grid-template-columns: 16rem 1fr 1fr 1fr 11rem;
+    }
+    .comparison-list .cta {
+        display: block;
+        width: 10rem;
+        font-size: 1.4rem;
+        padding: 0.8rem 0;
+        margin-right: 1rem;
+    }
+}
+@media screen and (min-width: 900px){
+
+    .comparison-list {
+        width: 880px;
+        margin: 0 auto;
+    }
+    .comparison-list > li {
+        width: 100%;
+    }
+}
+
+
+
+/* AI comparison selection */
+.selector-wrap {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@keyframes neuron {
+    from { stroke-dashoffset: 1000;}
+    to { stroke-dashoffset: 100;}
+}
+.brainsvg {
+    width: 60px;
+    fill : none;
+ }
+.brainsvg use {
+    stroke-width: 15;
+    stroke: #010814;
+}
+.brainsvg .ol {
+    stroke: rgb(254,219,18);
+    stroke-dasharray: 12;
+    animation: neuron 10s linear infinite forwards;
+}
+
+.selector-wrap fieldset{
+    width: calc( 100vw - 4rem );
+    box-sizing: border-box;
+    margin: 2rem;
+    border: 1px dotted rgba(255,255,255,0.4);
+}
+.selector-wrap p {
+    text-align: center;
+    padding-top: 2rem;
+}
+.selector-wrap h2 {
+    font-size: 1.4rem;
+}
+
+.selector-wrap  {
+    padding: 0.5rem 0;
+}
+
+.selector-wrap li {
+    font-size: 1.4rem;
+    min-width: 240px;
+    display: grid;
+    grid-template-columns: 1fr 0 9rem 7rem;
+    /* justify-content: center; */
+    /*     background-image: linear-gradient(to bottom, rgba(1,8,20,0.5), rgba(1,8,20,0)); */
+    border-bottom: 1px dotted rgba(255,255,255,0.4);
+    padding: 1rem 0;
+    align-items: center;
+}
+
+.selector-wrap li .link {
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+    border-bottom: 0 none;
+    text-decoration: underline dotted;
+}
+
+.selector-wrap li .pseudo-btn {
+    padding: 0.4rem 0;
+    font-size: 1.2rem;
+    border-radius: 3rem;
+    border: 1px solid rgba(255,255,255,0.4);
+    display: block;
+    text-align: center;
+    margin-right: 1rem;
+    position: relative;
+    text-transform: lowercase;
+    transition: all 0.2s ease-in-out;
+}
+
+.selector-wrap li .pseudo-btn:before {
+    content: '+';
+    padding-right: 0.5rem;
+}
+.selector-wrap li input:checked + .pseudo-btn {
+    color: rgba(1,8,20,1);
+    background-color: rgba(255,255,255,0.8);
+}
+.selector-wrap li input[disabled] + .pseudo-btn {
+    border-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.1);
+}
+.selector-wrap li input:checked + .pseudo-btn:before {
+    content: '-';
+    padding-right: 0.5rem;
+}
+@media screen and ( min-width: 420px ){
+    .selector-wrap fieldset{
+        max-width: 380px;
+    }
+}
+
+
+.details-wrap h1 {
+    text-align: center;
+}
+.details-wrap button {
+    position: absolute;
+    top: 0;
+    left: 2rem
+}
+.details-wrap button:before {
+    content: '<';
+    position: absolute;
+    left: -1rem;
+}
+.details-wrap article {
+    width: calc( 100vw - 4rem );
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.details-wrap article h1 {
+    text-align: center;
+    font-size: 4rem;
+    padding-bottom: 1rem
+}
+.details-wrap article h2 {
+    border-bottom: 1px dotted rgba(255,255,255,0.4);
+    margin-bottom: 1rem
+}
+.details-wrap article p {
+    padding-bottom: 2rem;
+    font-size: 1.4rem;
+}
+.details-wrap article dl {
+    margin: 0 0 1rem;
+    display: grid;
+    grid-template-columns: 3fr 8fr;
+    align-items: center;
+    border-top: 1px dotted rgba(255,255,255,0.4);
+    padding: 1rem 0;;
+}
+
+.details-wrap article dt {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    padding: 0;
+    margin: 0;
+
+    
+}
+.details-wrap article strong {
+    margin-right: 4rem;
+}
+
+.details-wrap article dd {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    align-items: center;
+    justify-content: center;
+}
+
+.details-wrap .radial-score svg {
+    top: 0;
+}
+.details-wrap .radial-score:after {
+        content: "\007B";
+        font-size: 2rem;
+        line-height: 1;
+        position: absolute;
+        right: -2.2rem;
+        height: 2rem;
+        font-weight: 200;
+        top: calc( 50% - 1rem );
+    }
+.details-wrap article dd li {
+
+    display: flex;
+    padding: 0.4rem 0;
+}
+.details-wrap  ul span, .details-wrap  dd ul b {
+        display: block;
+        position: static;
+        max-height: 100vh;
+        font-size: 1.2rem;
+        line-height: 1;
+        height: 1.4rem;
+        background-color: transparent;
+    }
+    .details-wrap  dd ul b {
+        padding-right: 1rem;
+        width: 1.4rem;
+    }
+    .details-wrap  ul span {
+
+    }
+
